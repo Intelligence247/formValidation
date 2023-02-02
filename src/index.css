@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply m-0 p-0 box-border
+}
+
+.body {
+  @apply w-[99.5vw] h-[max-content] grid place-items-center bg-[grey] py-[4rem]
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: white;
+
+}
+
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-[green] rounded-[30px]
+}
+
+header {
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: filter 1s linear infinite;
+  background-image: repeating-linear-gradient(90deg, #ff2341 10%, #1432ff, 20%, #eed123 30%, #4356 40%, green 50%);
+  animation: filter 1s infinite linear;
+  margin-left: -1rem;
+}
+
+header {
+  @apply text-center text-[3rem] text-[transparent] font-[cursive] w-[max-content]
+}
+
+main {
+  @apply w-[30.7rem] min-h-[35rem] bg-[lightblue] px-[3rem] pt-[2rem] rounded-[5px] pb-[1.5rem]
+}
+
+input {
+  @apply border-[.15rem] border-[blue] h-[2.5rem] outline-[yellow] text-[blue] pl-4 rounded-[5px]
+}
+
+.forminpuits {
+  @apply flex flex-col
+}
+
+label {
+  @apply mt-[1.2rem]
+}
+
+.err {
+  @apply text-[#ffa500] text-[.7rem]
+}
+
+@keyframes filter {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
