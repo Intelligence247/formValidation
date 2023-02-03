@@ -34,7 +34,7 @@ function App() {
           <label htmlFor="Password">Password</label>
           <input type="password" placeholder='Password'
             onChange={(e) => setpassword(e.target.value)} />
-          <p className="err">{password.match(/^[A-Za-z0-9]{6,20}$/) || password.match(/[@-_]/) ? '' : 'Password must be alphanumeric (@,_ and - are also allowed) and between 6 - 20 characters'}</p>
+          <p className="err">{password.match(/^[A-Za-z0-9]|[@-_]{6,20}$/) || password.match(/[@-_]/) ? '' : 'Password must be alphanumeric (@,_ and - are also allowed) and between 6 - 20 characters'}</p>
 
           <label htmlFor="Age">Age</label>
           <input type="number" placeholder='Age' onChange={(e) => setAge(e.target.value)} />
