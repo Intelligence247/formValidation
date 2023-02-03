@@ -28,13 +28,13 @@ function App() {
           <p className="err">{LastN.match(/^[A-Za-z.*$]{3,16}$/) && !LastN.match(/[0-9]/) ? '' : 'Last name must be Alphabetic and contain 3 - 16 characters'}</p>
 
           <label htmlFor="Email"> Email</label>
-          <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
           <p className="err">{Email.match(/[A-Za-z0-9]+@[a-zA-Z]+[.]+[a-zA-Z]/) ? '' : 'Last name must be Alphabetic and contain 3 - 16 characters'}</p>
 
           <label htmlFor="Password">Password</label>
           <input type="password" placeholder='Password'
             onChange={(e) => setpassword(e.target.value)} />
-          <p className="err">{password.match(/^[A-Za-z0-9]|[@-_]{6,20}$/) || password.match(/[@-_]/) ? '' : 'Password must be alphanumeric (@,_ and - are also allowed) and between 6 - 20 characters'}</p>
+          <p className="err">{password.match(/^[A-Za-z0-9]{6,20}$/) || password.match(/[@-_]/) ? '' : 'Password must be alphanumeric (@,_ and - are also allowed) and between 6 - 20 characters'}</p>
 
           <label htmlFor="Age">Age</label>
           <input type="number" placeholder='Age' onChange={(e) => setAge(e.target.value)} />
