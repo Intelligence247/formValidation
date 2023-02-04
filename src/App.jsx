@@ -3,12 +3,55 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [firstN, setFirstN] = useState('firstname')
-  const [LastN, setLastN] = useState('lastname')
-  const [password, setpassword] = useState('9009jfnd')
-  const [Age, setAge] = useState('23')
-  const [level, setLevel] = useState('100')
-  const [Email, setEmail] = useState('Uthmanabdullahi2020@gmail.com')
+  const [firstN, setFirstN] = useState('')
+  const [LastN, setLastN] = useState('')
+  const [Email, setEmail] = useState('')
+  const [password, setpassword] = useState('')
+  const [Age, setAge] = useState('')
+  const [level, setLevel] = useState('')
+
+  const handleInputs = (e) => {
+    if (e.target.name === "firstName") {
+      setFirstN(e.target.value);
+    } else if (e.target.name === "lastName") {
+      setLastN(e.target.value);
+    } else if (e.target.name = "email") {
+      setEmail(e.target.value)
+    }
+  }
+
+  const handleValidation = (name) => {
+    switch (name) {
+      case "firstName":
+        const firstNRegex = /^[A-Za-z.*$]{3,16}$/
+        if (firstN) {
+          if (firstN.match(firstNRegex) && !firstN.match(/[0-9]/)) {
+            return ''
+          }
+          return 'First name must be Alphabetic and contain 3 - 16 characters'
+        }
+        break;
+      case "LastName":
+        const lastNRegex = /^[A-Za-z.*$]{3,16}$/
+        if (LastN) {
+          if (LastN.match(lastNRegex) && !LastN.match(/[0-9]/)) {
+            return ''
+          }
+          return 'Last name must be Alphabetic and contain 3 - 16 characters'
+        }
+        break;
+        const emailRegex = /[A-Za-z0-9]+@[a-zA-Z]+[.]+[a-zA-Z]/
+        if (Email) {
+          if (Email.match(emailRegex)) {
+            return ''
+          }
+          return 'Email must be a valid address, e.g exmaple@example.com'
+        }
+        break;
+      default:
+        return ''
+    }
+  }
 
   return (
     <div className="body">
@@ -17,19 +60,19 @@ function App() {
           Intelligence's Form
         </header>
         <div className="forminpuits">
-          <label htmlFor="FirstName"> First Name</label>
-          <input type="text" placeholder='First Name' onChange={(e) => setFirstN(e.target.value)} />
-
-          <p className='err'>{firstN.match(/^[A-Za-z.*$]{3,16}$/) && !firstN.match(/[0-9]/) ? '' : 'First name must be Alphabetic and contain 3 - 16 characters'}</p>
+          <label htmlFor="FirstName">First Name</label>
+          <input type="text" placeholder='First Name' onChange={handleInputs} name="firstName" />
+          <p className='err'>{handleValidation("firstName")}</p>
 
 
           <label htmlFor="Last Name"> Last Name</label>
-          <input type="text" placeholder='Last Name' onChange={(e) => setLastN(e.target.value)} />
-          <p className="err">{LastN.match(/^[A-Za-z.*$]{3,16}$/) && !LastN.match(/[0-9]/) ? '' : 'Last name must be Alphabetic and contain 3 - 16 characters'}</p>
+          <input type="text" placeholder='Last Name' onChange={handleInputs} name="lastName" />
+          <p className="err">{handleValidation("lastName")}</p>
 
           <label htmlFor="Email"> Email</label>
-          <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-          <p className="err">{Email.match(/[A-Za-z0-9]+@[a-zA-Z]+[.]+[a-zA-Z]/) ? '' : 'Last name must be Alphabetic and contain 3 - 16 characters'}</p>
+          <input type="email" placeholder='Email' onChange={handleInputs} name=
+            'email' />
+          <p className="err">{handleValidation('email')}</p>
 
           <label htmlFor="Password">Password</label>
           <input type="password" placeholder='Password'
